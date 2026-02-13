@@ -6,6 +6,6 @@
     "github-spec-kit": "github:github/spec-kit"
   },
   "scripts": {
-    "test": "npx github-spec-kit"
+    "test": "npx specify"
   }
 }

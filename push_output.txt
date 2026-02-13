@@ -1,0 +1,3 @@
+To https://github.com/code-onigiri/mcm-finder
+   2b1ae30..086148d  spec-kit-setup -> spec-kit-setup
+branch 'spec-kit-setup' set up to track 'origin/spec-kit-setup'.

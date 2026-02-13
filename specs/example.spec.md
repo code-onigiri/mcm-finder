@@ -1,11 +1,16 @@
-# Example spec for GitHub Copilot CLI
+# Example spec: simple Copilot CLI test
 
-This is a brief example spec demonstrating how to document CLI behavior for the Copilot CLI.
+Description
 
-## Example: list help
-Command:
-    copilot --help
+Run a simple Copilot CLI command and verify the output.
 
-Expected:
-- The command exits with status 0.
-- The output includes a short usage summary.
+Command
+
+```bash
+copilot --version
+```
+
+Expected outcome
+
+- The command exits with status code 0.
+- Stdout contains a semantic version string (e.g. "1.2.3").
