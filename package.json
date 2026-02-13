@@ -1,0 +1,11 @@
+{
+  "name": "mcm-finder",
+  "private": true,
+  "license": "MIT",
+  "devDependencies": {
+    "github-spec-kit": "*"
+  },
+  "scripts": {
+    "test": "npx github-spec-kit"
+  }
+}
