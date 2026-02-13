@@ -9,3 +9,9 @@ To run the GitHub Spec Kit specs locally:
 - Run the specs: `npm test` (this runs `npx github-spec-kit`)
 
 Or run directly with npx: `npx github-spec-kit`
+
+## Running specs
+
+Run specs locally with either:
+- npm install && npm test
+- or, without installing dependencies: npx github-spec-kit

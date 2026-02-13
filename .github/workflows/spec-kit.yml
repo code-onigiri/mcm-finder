@@ -1,19 +1,17 @@
-name: Spec Kit
-
-on:
-  push: {}
-  pull_request: {}
-
+name: spec-kit
+on: [push, pull_request]
 jobs:
-  specs:
+  spec:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '18'
           cache: 'npm'
-      - name: Install dependencies
-        run: npm install --no-audit --no-fund
+      - name: Install
+        run: npm ci
       - name: Run specs
         run: npm test

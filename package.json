@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "devDependencies": {
-    "github-spec-kit": "*"
+    "github-spec-kit": "github:github/spec-kit"
   },
   "scripts": {
     "test": "npx github-spec-kit"
