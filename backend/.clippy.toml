@@ -1,0 +1,5 @@
+# Clippy configuration for strict linting
+warn = "clippy::all"
+warn = "clippy::pedantic"
+allow = "clippy::module_name_repetitions"
+allow = "clippy::missing_errors_doc"

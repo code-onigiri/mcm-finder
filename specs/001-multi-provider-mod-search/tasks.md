@@ -29,12 +29,12 @@ This is a **Web application** structure (per plan.md):
 
 **Purpose**: Initialize Rust backend and React frontend with required dependencies
 
-- [ ] T001 Create directory structure per plan.md: backend/src/{models,providers,services,api,cli}, backend/tests/{contract,integration,unit}, frontend/src/{components,pages,services}, data/
-- [ ] T002 Initialize Rust backend with Cargo.toml in backend/ directory (dependencies: tokio, reqwest, axum, serde, sqlx, clap, tracing, uuid, chrono, thiserror per research.md)
-- [ ] T003 [P] Initialize React TypeScript frontend in frontend/ directory (create-react-app with typescript template, add axios and react-query per quickstart.md)
-- [ ] T004 [P] Configure Rust linting and formatting tools in backend/ (cargo fmt, cargo clippy configuration)
-- [ ] T005 [P] Create .gitignore for Rust and Node.js artifacts
-- [ ] T006 [P] Create README.md with project overview and quickstart reference
+- [X] T001 Create directory structure per plan.md: backend/src/{models,providers,services,api,cli}, backend/tests/{contract,integration,unit}, frontend/src/{components,pages,services}, data/
+- [X] T002 Initialize Rust backend with Cargo.toml in backend/ directory (dependencies: tokio, reqwest, axum, serde, sqlx, clap, tracing, uuid, chrono, thiserror per research.md)
+- [X] T003 [P] Initialize React TypeScript frontend in frontend/ directory (create-react-app with typescript template, add axios and react-query per quickstart.md)
+- [X] T004 [P] Configure Rust linting and formatting tools in backend/ (cargo fmt, cargo clippy configuration)
+- [X] T005 [P] Create .gitignore for Rust and Node.js artifacts
+- [X] T006 [P] Create README.md with project overview and quickstart reference
 
 **Checkpoint**: Project structure initialized - ready for foundational implementation
 
@@ -48,31 +48,31 @@ This is a **Web application** structure (per plan.md):
 
 ### Database & Storage Setup
 
-- [ ] T007 Create SQLite database schemas in data/ directory: sessions_db.sqlite (searches, session_mods tables per research.md), cache_db.sqlite (provider_responses table), discovery_cache.sqlite (relationships, patterns tables)
-- [ ] T008 Create database migration scripts in backend/migrations/ for all three database schemas with WAL mode enabled
-- [ ] T009 [P] Configure sqlx database connection pool in backend/src/db/mod.rs with WAL pragma
+- [X] T007 Create SQLite database schemas in data/ directory: sessions_db.sqlite (searches, session_mods tables per research.md), cache_db.sqlite (provider_responses table), discovery_cache.sqlite (relationships, patterns tables)
+- [X] T008 Create database migration scripts in backend/migrations/ for all three database schemas with WAL mode enabled
+- [X] T009 [P] Configure sqlx database connection pool in backend/src/db/mod.rs with WAL pragma
 
 ### Core Data Models
 
-- [ ] T010 [P] Create SearchQueryProfile model in backend/src/models/search_query.rs (fields: id, keywords, filters, provider_scope, sort_mode per data-model.md)
-- [ ] T011 [P] Create SearchFilters struct in backend/src/models/search_query.rs (minecraft_version, loaders, categories, update_recency_window, min_downloads, open_source_only)
-- [ ] T012 [P] Create ProviderResultRecord model in backend/src/models/provider_result.rs (all fields from data-model.md with validation rules)
-- [ ] T013 [P] Create ConsolidatedModProfile model in backend/src/models/consolidated_profile.rs (provider_records, metadata_conflicts, discovery_evidence, compatibility_assessment, maintenance_signals per data-model.md)
-- [ ] T014 [P] Create DiscoveryEvidenceItem model in backend/src/models/discovery.rs (relationship_type, evidence_source, confidence per data-model.md)
-- [ ] T015 [P] Create SearchSessionSummary model in backend/src/models/session.rs (original_query, shortlisted_mods, comparison_notes per data-model.md)
+- [X] T010 [P] Create SearchQueryProfile model in backend/src/models/search_query.rs (fields: id, keywords, filters, provider_scope, sort_mode per data-model.md)
+- [X] T011 [P] Create SearchFilters struct in backend/src/models/search_query.rs (minecraft_version, loaders, categories, update_recency_window, min_downloads, open_source_only)
+- [X] T012 [P] Create ProviderResultRecord model in backend/src/models/provider_result.rs (all fields from data-model.md with validation rules)
+- [X] T013 [P] Create ConsolidatedModProfile model in backend/src/models/consolidated_profile.rs (provider_records, metadata_conflicts, discovery_evidence, compatibility_assessment, maintenance_signals per data-model.md)
+- [X] T014 [P] Create DiscoveryEvidenceItem model in backend/src/models/discovery.rs (relationship_type, evidence_source, confidence per data-model.md)
+- [X] T015 [P] Create SearchSessionSummary model in backend/src/models/session.rs (original_query, shortlisted_mods, comparison_notes per data-model.md)
 
 ### Provider Infrastructure
 
-- [ ] T016 Create Provider trait in backend/src/providers/mod.rs with async search and get_mod_details methods per research.md adapter pattern
-- [ ] T017 [P] Create ProviderResult normalization struct in backend/src/providers/mod.rs with all fields from provider-normalization.md
-- [ ] T018 [P] Create ProviderError enum in backend/src/providers/mod.rs (Network, RateLimited, InvalidResponse variants)
-- [ ] T019 [P] Create ModLoader and Provider enums in backend/src/models/enums.rs (Fabric, Forge, Quilt, NeoForge; Modrinth, CurseForge, GitHub, McBaike)
+- [X] T016 Create Provider trait in backend/src/providers/mod.rs with async search and get_mod_details methods per research.md adapter pattern
+- [X] T017 [P] Create ProviderResult normalization struct in backend/src/providers/mod.rs with all fields from provider-normalization.md
+- [X] T018 [P] Create ProviderError enum in backend/src/providers/mod.rs (Network, RateLimited, InvalidResponse variants)
+- [X] T019 [P] Create ModLoader and Provider enums in backend/src/models/enums.rs (Fabric, Forge, Quilt, NeoForge; Modrinth, CurseForge, GitHub, McBaike)
 
 ### Error Handling & Logging
 
-- [ ] T020 [P] Setup tracing subscriber configuration in backend/src/main.rs with structured logging per research.md
-- [ ] T021 [P] Create error handling middleware for axum in backend/src/api/middleware/error_handler.rs
-- [ ] T022 [P] Create custom error types in backend/src/error.rs (DatabaseError, ProviderError, ValidationError)
+- [X] T020 [P] Setup tracing subscriber configuration in backend/src/main.rs with structured logging per research.md
+- [X] T021 [P] Create error handling middleware for axum in backend/src/api/middleware/error_handler.rs
+- [X] T022 [P] Create custom error types in backend/src/error.rs (DatabaseError, ProviderError, ValidationError)
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 

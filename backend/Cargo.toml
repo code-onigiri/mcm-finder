@@ -1,0 +1,59 @@
+[package]
+name = "mcm-finder"
+version = "0.1.0"
+edition = "2021"
+authors = ["MCM-Finder Team"]
+description = "Professional multi-provider Minecraft mod search tool"
+license = "MIT"
+
+[dependencies]
+# Async runtime
+tokio = { version = "1.35", features = ["full"] }
+
+# HTTP client
+reqwest = { version = "0.11", features = ["json", "rustls-tls"], default-features = false }
+
+# Web framework
+axum = "0.7"
+tower = { version = "0.4", features = ["util", "timeout"] }
+tower-http = { version = "0.5", features = ["cors", "trace"] }
+
+# Serialization
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+
+# Database
+sqlx = { version = "0.7", features = ["runtime-tokio-rustls", "sqlite"] }
+
+# CLI
+clap = { version = "4.4", features = ["derive"] }
+indicatif = "0.17"
+colored = "2.1"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# Utilities
+uuid = { version = "1.6", features = ["v4", "serde"] }
+chrono = { version = "0.4", features = ["serde"] }
+thiserror = "1.0"
+async-trait = "0.1"
+sha2 = "0.10"
+
+[dev-dependencies]
+criterion = "0.5"  # Benchmarking
+mockall = "0.12"   # Mocking for tests
+
+[[bin]]
+name = "mcm-server"
+path = "src/api/main.rs"
+
+[[bin]]
+name = "mcm"
+path = "src/cli/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1

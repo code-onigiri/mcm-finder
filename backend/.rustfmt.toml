@@ -1,0 +1,6 @@
+# Rust formatting configuration
+[build]
+target-dir = "target"
+
+[fmt]
+edition = "2021"
