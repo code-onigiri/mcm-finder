@@ -570,12 +570,23 @@ cargo bench
 
 ### Acceptance Evaluation Protocol (NFR-004 / NFR-005)
 
-- Target sample: at least 20 professional users.
-- Scenario set: create a shortlist for one modern version and one legacy version.
-- Measurement: task completion time, completion success, and usefulness rating (1-5 scale).
-- Pass criteria:
-  - At least 90% of participants rate usefulness at 4/5 or above (NFR-004).
-  - At least 85% of first-time participants complete the workflow within 5 minutes (NFR-005).
+- **Target sample**: at least 20 professional users (modpack creators, server operators, technical reviewers).
+- **Scenario set (required for each participant)**:
+  1. Build shortlist for a modern target version (ex: `1.20.1`) with at least one loader filter.
+  2. Build shortlist for a legacy target version (ex: `1.7.10`) with version-aware sorting enabled.
+- **Measurement method**:
+  - Completion success (`yes/no`) for each scenario.
+  - End-to-end completion time from first query to final shortlist save.
+  - Usefulness rating (`1-5`) after both scenarios.
+- **Data capture template per participant**:
+  - `participant_id`, `first_time_user`, `scenario_1_success`, `scenario_1_time_s`, `scenario_2_success`,
+    `scenario_2_time_s`, `overall_usefulness_rating`.
+- **Pass criteria**:
+  - At least 90% of participants rate usefulness at **4/5 or above** (NFR-004).
+  - At least 85% of **first-time** participants complete the workflow within **5 minutes** (NFR-005).
+- **Protocol maintenance**:
+  - Re-run this evaluation after major ranking/filtering/discovery changes.
+  - Keep sample size and rating thresholds unchanged unless spec.md NFRs are formally updated.
 
 ---
 
@@ -624,6 +635,20 @@ Before marking Phase 1 complete:
 - [ ] CLI parses search command with filters
 - [ ] SQLite database created with sessions table
 - [ ] All cargo tests pass (`cargo test`)
+
+---
+
+## Constitution Compliance Review
+
+Run this checklist before release to confirm feature-level compliance:
+
+- [ ] **Correctness Before Convenience**: Validate conflict detection, degraded-mode behavior, and discovery-state transitions against `spec.md` and `contracts/`.
+- [ ] **Mandatory Verification First**: Execute contract, integration, and benchmark commands listed in this guide; record evidence in CI logs.
+- [ ] **Explicit Failure and Security Handling**: Verify API validation, rate limits, and secret-loading paths using negative test cases.
+- [ ] **Minimal Complexity and Maximum Reuse**: Confirm CLI/Web flows reuse shared backend services with no duplicated business logic.
+- [ ] **Deterministic Delivery and Traceability**: Confirm `tasks.md` completion and unresolved blockers are explicitly documented.
+
+If local Rust tooling is unavailable, defer command execution to CI and keep release gate open until evidence is collected.
 
 ---
 

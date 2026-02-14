@@ -15,6 +15,7 @@ reqwest = { version = "0.11", features = ["json", "rustls-tls"], default-feature
 
 # Web framework
 axum = "0.7"
+axum-server = { version = "0.7", features = ["tls-rustls"] }
 tower = { version = "0.4", features = ["util", "timeout"] }
 tower-http = { version = "0.5", features = ["cors", "trace"] }
 
@@ -40,6 +41,8 @@ chrono = { version = "0.4", features = ["serde"] }
 thiserror = "1.0"
 async-trait = "0.1"
 sha2 = "0.10"
+urlencoding = "2.1"
+futures = "0.3"
 
 [dev-dependencies]
 criterion = "0.5"  # Benchmarking

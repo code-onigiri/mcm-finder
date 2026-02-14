@@ -1,11 +1,11 @@
 // Consolidated mod profile
-use serde::{Deserialize, Serialize};
-use uuid::Uuid;
-use chrono::{DateTime, Utc};
-use std::collections::HashMap;
+use super::discovery::DiscoveryEvidenceItem;
 use super::enums::{ModLoader, Provider};
 use super::provider_result::ProviderResultRecord;
-use super::discovery::DiscoveryEvidenceItem;
+use chrono::{DateTime, Utc};
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use uuid::Uuid;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ConsolidatedModProfile {
@@ -14,32 +14,32 @@ pub struct ConsolidatedModProfile {
     pub canonical_slug: String,
     pub provider_records: Vec<ProviderResultRecord>,
     pub primary_source: Provider,
-    
+
     // Consolidated metadata
     pub authors: Vec<String>,
     pub descriptions: HashMap<String, String>,
-    
+
     // Compatibility (union of all providers)
     pub all_supported_versions: Vec<String>,
     pub all_supported_loaders: Vec<ModLoader>,
-    
+
     // Aggregated metrics
     pub total_downloads: u64,
     pub max_followers: u64,
     pub earliest_created: DateTime<Utc>,
     pub most_recent_update: DateTime<Utc>,
-    
+
     // Conflict detection
     pub metadata_conflicts: Vec<MetadataConflict>,
-    
+
     // Discovery integration
     pub discovery_evidence: Vec<DiscoveryEvidenceItem>,
-    
+
     // Decision support
     pub compatibility_assessment: CompatibilityStatus,
     pub maintenance_signals: MaintenanceStatus,
     pub adoption_risks: Vec<RiskFactor>,
-    
+
     // Computed scores
     pub composite_relevance: f64,
     pub confidence_score: f64,
@@ -52,7 +52,7 @@ pub struct MetadataConflict {
     pub severity: ConflictSeverity,
 }
 
-#[derive(Debug, Clone, Copy, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
 pub enum ConflictSeverity {
     Minor,
     Major,
@@ -100,17 +100,19 @@ pub enum RiskSeverity {
 impl ConsolidatedModProfile {
     pub fn validate(&self) -> Result<(), String> {
         if self.provider_records.is_empty() {
-            return Err("ConsolidatedModProfile must have at least one provider record".to_string());
+            return Err(
+                "ConsolidatedModProfile must have at least one provider record".to_string(),
+            );
         }
-        
+
         if !(0.0..=1.0).contains(&self.composite_relevance) {
             return Err("Composite relevance must be in range [0.0, 1.0]".to_string());
         }
-        
+
         if !(0.0..=1.0).contains(&self.confidence_score) {
             return Err("Confidence score must be in range [0.0, 1.0]".to_string());
         }
-        
+
         Ok(())
     }
 }

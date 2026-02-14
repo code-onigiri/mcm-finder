@@ -1,7 +1,7 @@
 // Enum definitions used across the application
 use serde::{Deserialize, Serialize};
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum ModLoader {
     Fabric,
     Forge,
@@ -21,14 +21,14 @@ impl ModLoader {
     }
 }
 
-#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize)]
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum Provider {
     Modrinth,
     CurseForge,
     #[allow(dead_code)]
-    GitHub,    // Future
+    GitHub, // Future
     #[allow(dead_code)]
-    McBaike,   // Future (mc百科)
+    McBaike, // Future (mc百科)
 }
 
 impl Provider {

@@ -1,14 +1,196 @@
 .App {
-  text-align: center;
+  min-height: 100vh;
+  background: #f5f7fb;
+  color: #1f2937;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-page {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.search-form {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid #d1d5db;
+}
+
+.search-form input[type='text'] {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.search-form select,
+.filter-panel select,
+.sort-selector select,
+.filter-panel input[type='range'] {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: #ffffff;
+}
+
+.search-form fieldset {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem;
+}
+
+.search-form__actions {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.75rem;
+}
+
+.search-form__actions button {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.search-form__actions button[disabled] {
+  background: #93c5fd;
+  cursor: not-allowed;
+}
+
+.filter-panel,
+.sort-selector {
+  margin-top: 0.75rem;
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 1rem;
+  display: grid;
+  gap: 0.75rem;
+  border: 1px solid #d1d5db;
+}
+
+.filter-panel fieldset {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.search-page__error {
+  color: #dc2626;
+}
+
+.search-page__summary {
+  margin-top: 1rem;
+  font-weight: 600;
+}
+
+.degraded-notice {
+  margin: 1rem 0;
+  padding: 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #f59e0b;
+  background: #fffbeb;
+}
+
+.result-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.result-list__empty {
+  margin-top: 1rem;
+}
+
+.result-card {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 0.9rem;
+}
+
+.result-card__meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+}
+
+.progress-indicator {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #bfdbfe;
+  background: #eff6ff;
+  border-radius: 8px;
+}
+
+.progress-indicator__header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.progress-indicator__bar {
+  width: 100%;
+  background: #dbeafe;
+  border-radius: 999px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.progress-indicator__fill {
+  height: 100%;
+  background: #2563eb;
+}
+
+.mod-detail-section {
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 0.75rem;
+}
+
+.saved-sessions-list,
+.session-comparison {
+  margin-top: 1.25rem;
+  background: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.saved-sessions-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.saved-sessions-list button {
+  width: 100%;
+  text-align: left;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.5rem;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.session-comparison__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+}
+
+.session-comparison__card {
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 0.75rem;
 }

@@ -1,0 +1,26 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      RUST_LOG: info
+      CURSEFORGE_API_KEY: ${CURSEFORGE_API_KEY:-}
+      BIND_ADDRESS: 0.0.0.0
+      FRONTEND_ORIGIN: http://localhost:8080
+    volumes:
+      - mcm_data:/app/data
+
+  frontend:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+
+volumes:
+  mcm_data:

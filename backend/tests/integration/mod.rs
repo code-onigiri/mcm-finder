@@ -1,9 +1,4 @@
-// Integration tests for end-to-end workflows
-// Will be implemented in Phase 3
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn placeholder_test() {
-        assert!(true);
-    }
-}
+mod ambiguous_relationship_confidence_test;
+mod high_volume_and_rare_version_test;
+mod ordering_consistency_test;
+mod provider_outage_and_stale_cache_test;

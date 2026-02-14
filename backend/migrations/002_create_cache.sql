@@ -12,6 +12,19 @@ CREATE TABLE IF NOT EXISTS provider_responses (
 
 CREATE INDEX IF NOT EXISTS idx_cache_expiry ON provider_responses(provider, expires_at);
 CREATE INDEX IF NOT EXISTS idx_provider_cache ON provider_responses(provider, cache_key);
+CREATE INDEX IF NOT EXISTS idx_provider_cache_lookup ON provider_responses(provider, cache_key, expires_at);
 
 -- Enable WAL mode for concurrent access
 PRAGMA journal_mode=WAL;
+
+CREATE TABLE IF NOT EXISTS result_cache (
+    cache_key TEXT PRIMARY KEY,
+    query_hash TEXT NOT NULL,
+    result_data TEXT NOT NULL,
+    cached_at INTEGER NOT NULL,
+    expires_at INTEGER NOT NULL
+);
+
+CREATE INDEX IF NOT EXISTS idx_result_cache_expiry ON result_cache(expires_at);
+
+CREATE INDEX IF NOT EXISTS idx_result_cache_query ON result_cache(query_hash);

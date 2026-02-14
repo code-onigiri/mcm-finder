@@ -1,10 +1,10 @@
 // Search session summary for preservation
-use serde::{Deserialize, Serialize};
-use uuid::Uuid;
-use chrono::{DateTime, Utc};
-use std::collections::HashMap;
-use super::search_query::SearchQueryProfile;
 use super::enums::Provider;
+use super::search_query::SearchQueryProfile;
+use chrono::{DateTime, Utc};
+use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
+use uuid::Uuid;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct SearchSessionSummary {
@@ -12,20 +12,20 @@ pub struct SearchSessionSummary {
     pub created_at: DateTime<Utc>,
     pub updated_at: DateTime<Utc>,
     pub expires_at: Option<DateTime<Utc>>,
-    
+
     // Query context
     pub original_query: SearchQueryProfile,
     pub query_description: Option<String>,
-    
+
     // Results
     pub shortlisted_mods: Vec<Uuid>,
     pub comparison_notes: HashMap<Uuid, String>,
-    
+
     // Metadata
     pub search_duration_ms: u64,
     pub providers_used: Vec<Provider>,
     pub total_candidates_found: u32,
-    
+
     // Sharing
     pub shareable_link: Option<String>,
     pub user_identifier: Option<String>,
@@ -50,18 +50,18 @@ impl SearchSessionSummary {
             user_identifier: None,
         }
     }
-    
+
     pub fn validate(&self) -> Result<(), String> {
         if self.created_at > self.updated_at {
             return Err("Created timestamp cannot be after updated timestamp".to_string());
         }
-        
+
         if let Some(expires) = self.expires_at {
             if expires <= self.created_at {
                 return Err("Expiry must be after creation".to_string());
             }
         }
-        
+
         Ok(())
     }
 }
